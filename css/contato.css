@@ -1,0 +1,423 @@
+/* ============================================
+   BARBEARIA REIS — contato.css
+   ============================================ */
+
+/* ── PAGE HEADER ── */
+.page-header {
+  padding: 140px 60px 80px;
+  text-align: center;
+  background: linear-gradient(180deg, #0d0d0d 0%, #111100 100%);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-header::before {
+  content: '📍';
+  position: absolute;
+  font-size: 200px;
+  opacity: 0.04;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.page-tag {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--white);
+}
+
+/* ── MAIN GRID ── */
+.main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+}
+
+/* ── CONTACT INFO ── */
+.contact-info h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.info-card {
+  background: var(--dark2);
+  border: 1px solid rgba(201, 168, 76, 0.08);
+  padding: 28px;
+  margin-bottom: 16px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: all 0.3s;
+}
+
+.info-card:hover {
+  border-color: rgba(201, 168, 76, 0.3);
+}
+
+.info-icon {
+  font-size: 32px;
+  min-width: 40px;
+}
+
+.info-title {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.info-value {
+  color: var(--white);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.info-sub {
+  color: var(--text);
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.hour-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  font-size: 14px;
+}
+
+.hour-row:last-child {
+  border-bottom: none;
+}
+
+.hour-day {
+  color: var(--text);
+}
+
+.hour-time {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.hour-time.closed {
+  color: rgba(201, 168, 76, 0.4);
+}
+
+/* ── SOCIAL LINKS ── */
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.social-btn {
+  flex: 1;
+  padding: 16px;
+  text-align: center;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.social-btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 168, 76, 0.06);
+}
+
+.social-btn.whatsapp:hover {
+  border-color: #25d366;
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.06);
+}
+
+/* ── FORM SECTION ── */
+.form-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--dark2);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  color: var(--white);
+  padding: 14px 18px;
+  font-family: 'Barlow', sans-serif;
+  font-size: 15px;
+  outline: none;
+  transition: border-color 0.3s;
+  border-radius: 2px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: var(--gold);
+}
+
+.form-group textarea {
+  height: 140px;
+  resize: vertical;
+}
+
+.form-group select option {
+  background: var(--dark2);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-submit {
+  width: 100%;
+  padding: 18px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  cursor: pointer;
+  font-family: 'Barlow', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border-radius: 2px;
+  margin-top: 8px;
+}
+
+.btn-submit:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.25);
+}
+
+/* ── SUCCESS MESSAGE ── */
+.success-msg {
+  display: none;
+  background: rgba(201, 168, 76, 0.08);
+  border: 1px solid var(--gold);
+  padding: 28px;
+  text-align: center;
+  margin-top: 16px;
+  border-radius: 2px;
+}
+
+.success-msg.show {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+
+.success-msg h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.success-msg p {
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* ── MAP SECTION ── */
+.map-section {
+  background: var(--dark2);
+  border-top: 1px solid rgba(201, 168, 76, 0.1);
+  padding: 60px;
+  text-align: center;
+}
+
+.map-section h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 32px;
+}
+
+.map-placeholder {
+  max-width: 900px;
+  margin: 0 auto;
+  height: 300px;
+  background: var(--dark3);
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.map-placeholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 30px,
+    rgba(201, 168, 76, 0.02) 30px,
+    rgba(201, 168, 76, 0.02) 60px
+  );
+}
+
+.map-icon {
+  font-size: 60px;
+}
+
+.map-addr {
+  font-size: 18px;
+  color: var(--white);
+  font-weight: 600;
+}
+
+.map-city {
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 2px;
+  margin-top: 4px;
+}
+
+.map-btn {
+  margin-top: 16px;
+  display: inline-block;
+  background: var(--gold);
+  color: var(--dark);
+  padding: 12px 28px;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.map-btn:hover {
+  background: var(--gold-light);
+}
+
+/* ── WA BANNER ── */
+.wa-banner {
+  background: linear-gradient(135deg, #0a2a14 0%, #0d3d1c 50%, #0a2a14 100%);
+  border-top: 1px solid rgba(37, 211, 102, 0.2);
+  padding: 60px;
+  text-align: center;
+}
+
+.wa-banner h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.wa-banner p {
+  color: rgba(212, 197, 169, 0.7);
+  margin-bottom: 28px;
+}
+
+.wa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: #25d366;
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 2px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.wa-btn:hover {
+  background: #1da851;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.3);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .main {
+    grid-template-columns: 1fr;
+    padding: 50px 24px;
+  }
+
+  .page-header {
+    padding: 120px 24px 60px;
+  }
+
+  .map-section {
+    padding: 40px 24px;
+  }
+
+  .wa-banner {
+    padding: 40px 24px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    flex-direction: column;
+  }
+}

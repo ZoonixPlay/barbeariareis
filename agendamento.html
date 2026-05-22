@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento – Barbearia Reis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #e8c76a;
+      --dark: #0D0D0D;
+      --dark2: #111111;
+      --dark3: #1a1a1a;
+      --olive: #3d4a2e;
+      --olive-light: #4e5e3a;
+      --khaki: #c2b280;
+      --red: #8b1a1a;
+      --red-light: #b02020;
+      --text: #c8b89a;
+      --white: #f0ead8;
+      --steel: #2a2a2a;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--dark);
+      color: var(--text);
+      font-family: 'Barlow', sans-serif;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(201,168,76,0.03) 39px, rgba(201,168,76,0.03) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(201,168,76,0.03) 39px, rgba(201,168,76,0.03) 40px);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 999;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(10,10,10,0.97);
+      border-bottom: 2px solid var(--gold);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .logo-circle {
+      width: 46px; height: 46px;
+      border: 2px solid var(--gold); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Bebas Neue', serif; font-size: 22px; color: var(--gold);
+      background: rgba(201,168,76,0.08);
+    }
+    .logo-text { font-family: 'Bebas Neue', serif; color: var(--white); font-size: 22px; line-height: 1.1; }
+    .logo-text span { display: block; font-size: 10px; color: var(--gold); font-family: 'Barlow Condensed', sans-serif; font-weight: 300; letter-spacing: 3px; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a { color: var(--text); text-decoration: none; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; transition: color .3s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-cta { background: var(--gold); color: var(--dark); padding: 9px 22px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: all .3s; clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%); }
+    .nav-cta:hover { background: var(--gold-light); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      padding: 140px 60px 60px;
+      background: linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 100%);
+      text-align: center;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+      position: relative; overflow: hidden;
+    }
+    .header-ribbon {
+      position: absolute; top: 0; left: 0; right: 0; height: 4px;
+      background: repeating-linear-gradient(90deg, var(--gold) 0px, var(--gold) 20px, transparent 20px, transparent 25px);
+    }
+    .page-header::before {
+      content: '✦ BARBEARIA REIS ✦';
+      position: absolute; font-family: 'Bebas Neue'; font-size: 200px; opacity: 0.02;
+      top: 50%; left: 50%; transform: translate(-50%,-50%); white-space: nowrap;
+      color: var(--gold); letter-spacing: 10px;
+    }
+    .page-tag {
+      display: inline-block; background: var(--olive); color: var(--khaki);
+      font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+      padding: 5px 18px; margin-bottom: 20px;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+    .page-title {
+      font-family: 'Bebas Neue', serif; font-size: clamp(48px, 7vw, 80px);
+      color: var(--white); line-height: 1; letter-spacing: 4px;
+    }
+    .page-title span { color: var(--gold); }
+    .page-subtitle { font-family: 'Barlow Condensed'; font-size: 15px; letter-spacing: 3px; color: var(--text); text-transform: uppercase; margin-top: 12px; }
+
+    /* ── MAIN LAYOUT ── */
+    .main {
+      max-width: 1200px; margin: 0 auto; padding: 60px 40px;
+      display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px;
+    }
+
+    /* ── SECTION TITLES ── */
+    .section-head {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 24px;
+    }
+    .section-num {
+      font-family: 'Bebas Neue'; font-size: 48px; color: rgba(201,168,76,0.2); line-height: 1;
+    }
+    .section-info h3 {
+      font-family: 'Bebas Neue'; font-size: 26px; color: var(--white); letter-spacing: 2px;
+    }
+    .section-info p { font-size: 12px; letter-spacing: 2px; color: var(--gold); text-transform: uppercase; }
+
+    /* ── SERVICES ── */
+    .cat-label {
+      font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); font-weight: 700; padding: 14px 0 8px;
+      border-bottom: 1px solid rgba(201,168,76,0.12); margin-bottom: 8px; margin-top: 8px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cat-label::before { content: '//'; opacity: 0.4; }
+
+    .price-card {
+      background: var(--dark2);
+      border: 1px solid rgba(201,168,76,0.06);
+      border-left: 3px solid transparent;
+      padding: 16px 20px;
+      margin-bottom: 8px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: all .25s; cursor: pointer; position: relative;
+    }
+    .price-card:hover { border-left-color: rgba(201,168,76,0.4); background: var(--dark3); }
+    .price-card.selected { border-left-color: var(--gold); background: rgba(201,168,76,0.05); border-color: rgba(201,168,76,0.2); }
+    .price-card.error { border-left-color: var(--red); border-color: rgba(139,26,26,0.4); }
+
+    .price-info { display: flex; align-items: center; gap: 12px; }
+    .price-icon { font-size: 22px; }
+    .price-name { font-family: 'Barlow Condensed'; font-size: 16px; font-weight: 700; color: var(--white); letter-spacing: 1px; }
+    .price-desc { font-size: 11px; color: var(--text); margin-top: 2px; }
+    .price-right { display: flex; align-items: center; gap: 12px; }
+    .price-value { font-family: 'Bebas Neue'; font-size: 22px; color: var(--gold); }
+    .price-check {
+      width: 20px; height: 20px; border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center; font-size: 11px; transition: all .25s;
+    }
+    .price-card.selected .price-check { background: var(--gold); border-color: var(--gold); color: var(--dark); font-weight: 900; }
+
+    /* ── FORM ── */
+    .form-block { margin-bottom: 24px; }
+    .form-label {
+      display: block; font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase; color: var(--gold); margin-bottom: 8px; font-weight: 600;
+    }
+    .form-input {
+      width: 100%; background: var(--dark2); border: 1px solid rgba(201,168,76,0.12);
+      border-left: 3px solid rgba(201,168,76,0.3); color: var(--white);
+      padding: 13px 16px; font-family: 'Barlow', sans-serif; font-size: 15px;
+      outline: none; transition: all .25s;
+    }
+    .form-input:focus { border-color: rgba(201,168,76,0.4); border-left-color: var(--gold); background: var(--dark3); }
+    .form-input::placeholder { color: rgba(200,184,154,0.3); }
+    .form-input.error { border-left-color: var(--red); border-color: rgba(139,26,26,0.4); }
+
+    /* ── DATE INPUT CUSTOMIZATION ── */
+    .date-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .date-field {
+      flex: 1;
+      background: linear-gradient(135deg, var(--dark2) 0%, #151515 100%);
+      border: 2px solid rgba(201,168,76,0.15) !important;
+      border-left: 4px solid var(--gold) !important;
+      padding: 14px 16px !important;
+      font-family: 'Barlow Condensed', sans-serif !important;
+      font-size: 16px !important;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--white) !important;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 0 20px rgba(201,168,76,0.08);
+      transition: all .3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .date-field:hover {
+      border-color: rgba(201,168,76,0.3) !important;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 0 30px rgba(201,168,76,0.15);
+      transform: translateY(-1px);
+    }
+
+    .date-field:focus {
+      border-color: var(--gold) !important;
+      border-left: 4px solid var(--gold) !important;
+      background: linear-gradient(135deg, var(--dark3) 0%, #1a1a1a 100%) !important;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 0 35px rgba(201,168,76,0.25);
+      transform: translateY(-2px);
+    }
+
+    .date-field::-webkit-calendar-picker-indicator {
+      filter: invert(1) brightness(1.2) sepia(0.3) hue-rotate(40deg);
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin-right: 4px;
+      transition: all .3s;
+    }
+
+    .date-field::-webkit-calendar-picker-indicator:hover {
+      filter: invert(1) brightness(1.5) sepia(0.6) hue-rotate(40deg);
+      background: rgba(201,168,76,0.15);
+      transform: scale(1.1);
+    }
+
+    .date-field::-webkit-datetime-edit {
+      color: var(--white);
+      padding: 4px;
+    }
+
+    .date-field::-webkit-datetime-edit-month-field,
+    .date-field::-webkit-datetime-edit-day-field,
+    .date-field::-webkit-datetime-edit-year-field {
+      color: var(--gold);
+      font-weight: bold;
+      background: rgba(201,168,76,0.05);
+      border-radius: 2px;
+      padding: 2px 4px;
+    }
+
+    .date-field::-webkit-datetime-edit-text {
+      color: var(--text);
+      padding: 2px;
+    }
+
+    .date-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      background: linear-gradient(135deg, rgba(201,168,76,0.1) 0%, rgba(201,168,76,0.05) 100%);
+      border: 2px solid rgba(201,168,76,0.2);
+      border-radius: 4px;
+      font-size: 20px;
+      opacity: 0.6;
+      transition: all .3s;
+    }
+
+    .date-field:focus ~ .date-indicator {
+      opacity: 1;
+      border-color: var(--gold);
+      background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(201,168,76,0.08) 100%);
+      box-shadow: 0 0 15px rgba(201,168,76,0.2);
+    }
+
+    .date-icon {
+      display: block;
+      animation: pulse-icon 2s ease-in-out infinite;
+    }
+
+    .date-field.error {
+      border-left-color: var(--red) !important;
+      border-color: rgba(139,26,26,0.4) !important;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.4), 0 0 20px rgba(139,26,26,0.1);
+    }
+
+    /* ── DATE / TIME ── */
+    .date-time-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+
+    .time-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+    .time-btn {
+      padding: 10px 6px; text-align: center;
+      background: var(--dark2); border: 1px solid rgba(201,168,76,0.1);
+      color: var(--text); font-family: 'Barlow Condensed'; font-size: 14px; font-weight: 600; letter-spacing: 1px;
+      cursor: pointer; transition: all .2s;
+    }
+    .time-btn:hover:not(.unavailable) { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.05); }
+    .time-btn.selected { background: var(--gold); color: var(--dark); border-color: var(--gold); font-weight: 700; }
+    .time-btn.unavailable {
+      opacity: 0.25; cursor: not-allowed; position: relative;
+      background: repeating-linear-gradient(45deg, #111, #111 3px, #141414 3px, #141414 6px);
+    }
+    .time-btn.unavailable::after { content: '✕'; font-size: 10px; display: block; color: #555; }
+
+    .no-times {
+      color: rgba(200,184,154,0.4);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      letter-spacing: 2px;
+      padding: 12px;
+      text-transform: uppercase;
+      grid-column: 1 / -1;
+    }
+
+    /* ── SUMMARY ── */
+    .summary-box {
+      background: linear-gradient(135deg, rgba(61,74,46,0.15) 0%, rgba(201,168,76,0.05) 100%);
+      border: 1px solid rgba(201,168,76,0.2);
+      border-left: 4px solid var(--gold);
+      padding: 20px; margin-bottom: 20px;
+    }
+    .summary-title { font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 2px; color: var(--gold); margin-bottom: 14px; }
+    .summary-row { display: flex; justify-content: space-between; align-items: center; padding: 6px 0; border-bottom: 1px solid rgba(201,168,76,0.07); font-size: 13px; }
+    .summary-row:last-child { border-bottom: none; }
+    .summary-label { color: var(--text); letter-spacing: 1px; font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; font-size: 11px; }
+    .summary-value { color: var(--white); font-weight: 600; }
+    .summary-id { color: var(--gold); font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px; }
+
+    /* ── BUTTONS ── */
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 20px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+      clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+      margin-bottom: 12px;
+    }
+    .btn-submit:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 30px rgba(201,168,76,0.25); }
+    .btn-submit:disabled { background: #333; color: #555; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .btn-cancel-form {
+      width: 100%;
+      padding: 14px;
+      background: transparent;
+      color: rgba(200,184,154,0.5);
+      border: 1px solid rgba(139,26,26,0.3);
+      cursor: pointer;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all .3s;
+    }
+    .btn-cancel-form:hover { border-color: #e74c3c; color: #e74c3c; background: rgba(139,26,26,0.08); }
+
+    /* ── SUCCESS OVERLAY ── */
+    .success-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.92);
+      align-items: center;
+      justify-content: center;
+    }
+    .success-overlay.show { display: flex; }
+
+    .success-card {
+      background: var(--dark2);
+      border: 1px solid var(--gold);
+      border-top: 4px solid var(--gold);
+      padding: 48px 56px;
+      text-align: center;
+      max-width: 480px;
+      animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .success-icon { font-size: 56px; margin-bottom: 16px; }
+    .success-title { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 4px; color: var(--gold); }
+    .success-detail { font-size: 15px; color: var(--text); margin: 16px 0; line-height: 1.7; }
+    .success-id { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 3px; margin: 12px 0; }
+    .success-close {
+      background: var(--gold);
+      color: var(--dark);
+      border: none;
+      cursor: pointer;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 16px;
+      letter-spacing: 3px;
+      padding: 12px 32px;
+      margin-top: 16px;
+      transition: all .3s;
+    }
+    .success-close:hover { background: var(--gold-light); }
+
+    @keyframes popIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes pulse-icon {
+      0%, 100% { opacity: 0.6; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 14px 20px; flex-wrap: wrap; }
+      .main { grid-template-columns: 1fr; padding: 40px 20px; }
+      .page-header { padding: 80px 20px 50px; }
+      .date-time-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-circle">R</div>
+    <div class="logo-text">BARBEARIA<span>REIS</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Início</a></li>
+    <li><a href="agendamento.html" class="active">Agendamento</a></li>
+    <li><a href="produtos.html">Produtos</a></li>
+    <li><a href="contato.html">Contato</a></li>
+  </ul>
+  <a href="agendamento.html" class="nav-cta">Agendar</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="header-ribbon"></div>
+  <span class="page-tag">Agendamento Online</span>
+  <h1 class="page-title">Marque seu <span>Corte</span></h1>
+  <p class="page-subtitle">Agende com Facilidade – Somos Rápidos e Precisos</p>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main">
+
+  <!-- LEFT COLUMN: SERVICES -->
+  <div class="col-left">
+    <div class="section-head">
+      <span class="section-num">1</span>
+      <div class="section-info">
+        <h3>Serviço</h3>
+        <p>Escolha um</p>
+      </div>
+    </div>
+
+    <!-- FADES -->
+    <div class="cat-label">FADES</div>
+    
+    <div class="price-card" data-service="Low Fade" data-price="30" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">📉</div>
+        <div>
+          <div class="price-name">Low Fade</div>
+          <div class="price-desc">Degradê baixo na orelha</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 30</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Mid Fade" data-price="30" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">⚡</div>
+        <div>
+          <div class="price-name">Mid Fade</div>
+          <div class="price-desc">Degradê na metade</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 30</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="High Fade" data-price="32" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🔝</div>
+        <div>
+          <div class="price-name">High Fade</div>
+          <div class="price-desc">Degradê alto com destaque</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 32</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <!-- CORTES SOCIAIS -->
+    <div class="cat-label">CORTES SOCIAIS</div>
+
+    <div class="price-card" data-service="Social na Máquina" data-price="30" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🤖</div>
+        <div>
+          <div class="price-name">Social na Máquina</div>
+          <div class="price-desc">Clássico com máquina</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 30</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Social na Tesoura" data-price="35" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">✂️</div>
+        <div>
+          <div class="price-name">Social na Tesoura</div>
+          <div class="price-desc">Precisão e sofisticação</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 35</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <!-- CORTES INFANTIS -->
+    <div class="cat-label">CORTES INFANTIS</div>
+    
+    <div class="price-card" data-service="Infantil Surfista" data-price="25" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🤙</div>
+        <div>
+          <div class="price-name">Infantil Surfista</div>
+          <div class="price-desc">Despojado e natural</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 25</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Infantil Social na Máquina" data-price="25" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🧒</div>
+        <div>
+          <div class="price-name">Infantil Social Máquina</div>
+          <div class="price-desc">Limpo e arrumado</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 25</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Infantil Social na Tesoura" data-price="28" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">✨</div>
+        <div>
+          <div class="price-name">Infantil Social Tesoura</div>
+          <div class="price-desc">Acabamento refinado</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 28</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <!-- CORTES TENDÊNCIA -->
+    <div class="cat-label">CORTES TENDÊNCIA</div>
+    
+    <div class="price-card" data-service="Degradê" data-price="30" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🌊</div>
+        <div>
+          <div class="price-name">Degradê</div>
+          <div class="price-desc">Transição gradual perfeita</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 30</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Moicano" data-price="35" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🔥</div>
+        <div>
+          <div class="price-name">Moicano</div>
+          <div class="price-desc">Lateral raspada, topo alto</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 35</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Americano" data-price="40" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">⭐</div>
+        <div>
+          <div class="price-name">Americano</div>
+          <div class="price-desc">Topo volumoso e moderno</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 40</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Jaca" data-price="38" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🎨</div>
+        <div>
+          <div class="price-name">Jaca</div>
+          <div class="price-desc">Ondulado natural e estiloso</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 38</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <!-- EXTRAS -->
+    <div class="cat-label">EXTRAS</div>
+    
+    <div class="price-card" data-service="Sobrancelha" data-price="15" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">👁️</div>
+        <div>
+          <div class="price-name">Sobrancelha</div>
+          <div class="price-desc">Design e design</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 15</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+    <div class="price-card" data-service="Barba" data-price="20" onclick="selectService(this)">
+      <div class="price-info">
+        <div class="price-icon">🧔</div>
+        <div>
+          <div class="price-name">Barba</div>
+          <div class="price-desc">Aparado + acabamento</div>
+        </div>
+      </div>
+      <div class="price-right">
+        <div class="price-value">R$ 20</div>
+        <div class="price-check"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT COLUMN: FORM & BOOKING -->
+  <div class="col-right">
+    <div class="section-head">
+      <span class="section-num">2</span>
+      <div class="section-info">
+        <h3>Agendar</h3>
+        <p>Complete seus dados</p>
+      </div>
+    </div>
+
+    <!-- FORM -->
+    <div class="form-block">
+      <label class="form-label">Nome Completo</label>
+      <input id="nome" type="text" class="form-input" placeholder="Seu nome aqui" />
+    </div>
+
+    <div class="form-block">
+      <label class="form-label">WhatsApp</label>
+      <input id="whatsapp" type="text" class="form-input" placeholder="(xx) 99999-9999" />
+    </div>
+
+    <!-- DATE & TIME -->
+    <div class="form-block">
+      <label class="form-label">📅 Data do Agendamento</label>
+      <div class="date-input-wrapper">
+        <input id="data" type="date" class="form-input date-field" />
+        <div class="date-indicator">
+          <span class="date-icon">✓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-block">
+      <label class="form-label" id="date-label-slots">Selecione uma data primeiro</label>
+      <div id="timeGrid" class="time-grid">
+        <div class="no-times">📅 Selecione uma data para ver os horários</div>
+      </div>
+    </div>
+
+    <!-- SUMMARY BOX -->
+    <div class="summary-box">
+      <div class="summary-title">Resumo do Agendamento</div>
+      <div class="summary-row">
+        <span class="summary-label">ID</span>
+        <span class="summary-id" id="sum-id">#—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Serviço</span>
+        <span class="summary-value" id="sum-service">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Data</span>
+        <span class="summary-value" id="sum-date">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Horário</span>
+        <span class="summary-value" id="sum-time">—</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Valor</span>
+        <span class="summary-value" id="sum-price">—</span>
+      </div>
+    </div>
+
+    <!-- BUTTONS -->
+    <button class="btn-submit" onclick="confirmarAgendamento()">CONFIRMAR AGENDAMENTO</button>
+    <button class="btn-cancel-form" onclick="cancelarForm()">Cancelar</button>
+  </div>
+
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div id="successOverlay" class="success-overlay">
+  <div class="success-card">
+    <div class="success-icon">✅</div>
+    <div class="success-title">Agendamento Confirmado!</div>
+    <div id="successDetail" class="success-detail"></div>
+    <div id="successId" class="success-id"></div>
+    <button class="success-close" onclick="fecharSucesso()">Fechar</button>
+  </div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+
+  let selectedService = null;
+  let selectedPrice   = null;
+  let selectedTime    = null;
+
+  // ── STORAGE ──
+  function getBookings() {
+    try { return JSON.parse(localStorage.getItem('reisBookings') || '[]'); }
+    catch (e) { return []; }
+  }
+
+  function saveBookings(arr) {
+    localStorage.setItem('reisBookings', JSON.stringify(arr));
+  }
+
+  function getNextId() {
+    const bookings = getBookings();
+    return bookings.length;
+  }
+
+  // ── TIME SLOTS ──
+  const ALL_SLOTS = ['07:00','08:00','09:00','10:00','11:00','12:00',
+                     '13:00','14:00','15:00','16:00','17:00'];
+
+  // ── DATE SETUP ──
+  function setupDateInput() {
+    const dataEl = document.getElementById('data');
+    const today  = new Date();
+    const yyyy   = today.getFullYear();
+    const mm     = String(today.getMonth() + 1).padStart(2, '0');
+    const dd     = String(today.getDate()).padStart(2, '0');
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+
+    dataEl.min = todayStr;
+
+    dataEl.addEventListener('change', function () {
+      if (this.value && this.value < todayStr) {
+        this.value = todayStr;
+      }
+      document.getElementById('sum-date').textContent = formatDate(this.value);
+      renderTimeSlots();
+    });
+
+    dataEl.addEventListener('input', function () {
+      if (this.value && this.value < todayStr) {
+        this.value = todayStr;
+      }
+    });
+  }
+
+  // ── FORMAT DATE ──
+  function formatDate(dateStr) {
+    if (!dateStr) return '—';
+    const [y, m, d] = dateStr.split('-');
+    return `${d}/${m}/${y}`;
+  }
+
+  // ── RENDER TIME SLOTS ──
+  function renderTimeSlots() {
+    const dateVal  = document.getElementById('data').value;
+    const grid     = document.getElementById('timeGrid');
+    const label    = document.getElementById('date-label-slots');
+
+    if (!dateVal) {
+      grid.innerHTML  = '<div class="no-times">📅 Selecione uma data para ver os horários disponíveis</div>';
+      label.textContent = 'Selecione uma data primeiro';
+      return;
+    }
+
+    label.textContent = `Horários para ${formatDate(dateVal)}`;
+
+    const bookedTimes = getBookings()
+      .filter(b => b.data === dateVal && b.status !== 'cancelado')
+      .map(b => b.horario);
+
+    grid.innerHTML = '';
+    selectedTime   = null;
+    document.getElementById('sum-time').textContent = '—';
+
+    ALL_SLOTS.forEach(slot => {
+      const btn = document.createElement('div');
+      btn.className   = 'time-btn';
+      btn.textContent = slot;
+
+      if (bookedTimes.includes(slot)) {
+        btn.classList.add('unavailable');
+        btn.title = 'Horário ocupado';
+      } else {
+        btn.addEventListener('click', () => selectTime(btn, slot));
+      }
+
+      grid.appendChild(btn);
+    });
+  }
+
+  // ── SELECT SERVICE ──
+  window.selectService = function (card) {
+    document.querySelectorAll('.price-card').forEach(c => {
+      c.classList.remove('selected');
+      c.querySelector('.price-check').textContent = '';
+    });
+    card.classList.add('selected');
+    card.querySelector('.price-check').textContent = '✓';
+    selectedService = card.dataset.service;
+    selectedPrice   = 'R$ ' + card.dataset.price;
+    document.getElementById('sum-service').textContent = selectedService;
+    document.getElementById('sum-price').textContent   = selectedPrice;
+    card.classList.remove('error');
+  };
+
+  // ── SELECT TIME ──
+  function selectTime(btn, slot) {
+    document.querySelectorAll('.time-btn').forEach(b => b.classList.remove('selected'));
+    btn.classList.add('selected');
+    selectedTime = slot;
+    document.getElementById('sum-time').textContent = slot;
+  }
+
+  // ── VALIDATE ──
+  function validate() {
+    let ok = true;
+
+    ['nome', 'whatsapp', 'data'].forEach(id => {
+      const el = document.getElementById(id);
+      if (!el.value.trim()) {
+        el.classList.add('error');
+        ok = false;
+      } else {
+        el.classList.remove('error');
+      }
+    });
+
+    if (!selectedService) {
+      showToast('⚠️ Selecione um serviço!');
+      ok = false;
+    }
+
+    if (!selectedTime) {
+      showToast('⚠️ Selecione um horário!');
+      ok = false;
+    }
+
+    return ok;
+  }
+
+  // ── TOAST ──
+  function showToast(msg) {
+    let toast = document.getElementById('reis-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'reis-toast';
+      toast.style.cssText = `
+        position:fixed;bottom:30px;left:50%;transform:translateX(-50%);
+        background:#1a1a1a;border:1px solid rgba(201,168,76,0.4);
+        color:#c9a84c;padding:14px 28px;font-family:'Barlow Condensed',sans-serif;
+        font-size:14px;letter-spacing:2px;z-index:99999;
+        transition:opacity .3s;border-radius:2px;
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.textContent = msg;
+    toast.style.opacity = '1';
+    clearTimeout(toast._t);
+    toast._t = setTimeout(() => { toast.style.opacity = '0'; }, 2800);
+  }
+
+  // ── CONFIRMAR ──
+  window.confirmarAgendamento = function () {
+    if (!validate()) return;
+
+    const nome      = document.getElementById('nome').value.trim();
+    const whatsapp  = document.getElementById('whatsapp').value.trim();
+    const data      = document.getElementById('data').value;
+    const id        = getNextId();
+
+    const booking = {
+      id,
+      nome,
+      whatsapp,
+      data,
+      horario:   selectedTime,
+      servico:   selectedService,
+      preco:     selectedPrice,
+      status:    'confirmado',
+      criadoEm:  new Date().toISOString()
+    };
+
+    const bookings = getBookings();
+    bookings.push(booking);
+    saveBookings(bookings);
+
+    document.getElementById('sum-id').textContent = `#${String(id).padStart(4, '0')}`;
+
+    document.getElementById('successDetail').innerHTML =
+      `<strong>${nome}</strong>, seu <strong>${selectedService}</strong> está marcado para<br>
+       <strong>${formatDate(data)}</strong> às <strong>${selectedTime}</strong>.<br><br>
+       Aguarde confirmação pelo WhatsApp.`;
+    document.getElementById('successId').textContent = `#${String(id).padStart(4, '0')}`;
+    document.getElementById('successOverlay').classList.add('show');
+
+    renderTimeSlots();
+  };
+
+  // ── CANCELAR ──
+  window.cancelarForm = function () {
+    if (!selectedService && !document.getElementById('nome').value && !selectedTime) return;
+
+    if (!confirm('Deseja limpar todos os dados do formulário?')) return;
+    resetForm();
+    showToast('🗑 Formulário limpo.');
+  };
+
+  // ── FECHAR SUCESSO ──
+  window.fecharSucesso = function () {
+    document.getElementById('successOverlay').classList.remove('show');
+    resetForm();
+  };
+
+  function resetForm() {
+    document.getElementById('nome').value     = '';
+    document.getElementById('whatsapp').value = '';
+    document.getElementById('data').value     = '';
+    selectedService = null;
+    selectedPrice   = null;
+    selectedTime    = null;
+
+    document.querySelectorAll('.price-card').forEach(c => {
+      c.classList.remove('selected', 'error');
+      c.querySelector('.price-check').textContent = '';
+    });
+
+    document.getElementById('sum-id').textContent      = '#—';
+    document.getElementById('sum-service').textContent = '—';
+    document.getElementById('sum-price').textContent   = '—';
+    document.getElementById('sum-date').textContent    = '—';
+    document.getElementById('sum-time').textContent    = '—';
+
+    renderTimeSlots();
+  }
+
+  // ── INIT ──
+  document.addEventListener('DOMContentLoaded', () => {
+    setupDateInput();
+    renderTimeSlots();
+  });
+
+})();
+</script>
+
+</body>
+</html>

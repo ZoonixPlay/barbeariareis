@@ -1,0 +1,483 @@
+/* ============================================
+   BARBEARIA REIS — index.css (Homepage)
+   ============================================ */
+
+/* ── HERO ── */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--dark);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 70% 50%, rgba(201, 168, 76, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 20% 80%, rgba(201, 168, 76, 0.06) 0%, transparent 50%);
+}
+
+.hero-lines {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  opacity: 0.04;
+}
+
+.hero-lines::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 30%;
+  width: 1px;
+  height: 200%;
+  background: var(--gold);
+  transform: rotate(15deg);
+  box-shadow: 60px 0 0 var(--gold), 120px 0 0 var(--gold), -60px 0 0 var(--gold);
+}
+
+.hero-content {
+  text-align: center;
+  z-index: 2;
+  animation: fadeUp 1.2s ease both;
+}
+
+.hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  color: var(--gold);
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  padding: 6px 20px;
+  margin-bottom: 28px;
+  animation: fadeUp 1s ease 0.2s both;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(60px, 10vw, 110px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 0.95;
+  animation: fadeUp 1s ease 0.4s both;
+}
+
+.hero-title .gold {
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-size: 15px;
+  font-weight: 300;
+  letter-spacing: 3px;
+  color: var(--text);
+  margin-top: 20px;
+  text-transform: uppercase;
+  animation: fadeUp 1s ease 0.6s both;
+}
+
+.hero-divider {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 32px auto;
+  animation: expand 1s ease 0.8s both;
+}
+
+.hero-desc {
+  font-size: 17px;
+  color: var(--text);
+  max-width: 480px;
+  line-height: 1.8;
+  animation: fadeUp 1s ease 1s both;
+}
+
+.hero-btns {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 40px;
+  animation: fadeUp 1s ease 1.2s both;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--dark);
+  padding: 16px 36px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(201, 168, 76, 0.3);
+}
+
+.btn-outline {
+  border: 1px solid rgba(201, 168, 76, 0.5);
+  color: var(--gold);
+  padding: 16px 36px;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+  border-radius: 2px;
+}
+
+.btn-outline:hover {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.08);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(201, 168, 76, 0.5);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  animation: fadeUp 1s ease 1.4s both;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollDown 1.5s ease infinite;
+}
+
+/* ── STATS ── */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: var(--dark2);
+  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+}
+
+.stat {
+  flex: 1;
+  max-width: 220px;
+  padding: 48px 40px;
+  text-align: center;
+  border-right: 1px solid rgba(201, 168, 76, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-top: 8px;
+}
+
+/* ── SERVICES ── */
+.services {
+  padding: 100px 60px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.section-tag {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.1;
+}
+
+.cat-block {
+  max-width: 1100px;
+  margin: 0 auto 60px;
+}
+
+.cat-label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cat-label-text {
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cat-label-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(201, 168, 76, 0.15);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 2px;
+}
+
+.service-card {
+  background: var(--dark2);
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s;
+  opacity: 0;
+  transform: translateY(30px);
+  cursor: default;
+}
+
+.service-card.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.service-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2px;
+  height: 0;
+  background: var(--gold);
+  transition: height 0.4s;
+}
+
+.service-card:hover::before {
+  height: 100%;
+}
+
+.service-card:hover {
+  background: var(--dark3);
+}
+
+.service-icon {
+  font-size: 30px;
+  margin-bottom: 14px;
+}
+
+.service-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 19px;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.service-desc {
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  color: var(--gold);
+  font-weight: 700;
+}
+
+.service-price span {
+  font-size: 13px;
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+}
+
+/* ── WHY US ── */
+.why {
+  padding: 100px 60px;
+  background: var(--dark2);
+  display: flex;
+  align-items: center;
+  gap: 80px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.why-visual {
+  flex: 0 0 420px;
+  position: relative;
+}
+
+.why-box {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, #1e1e1e 0%, #2a2014 100%);
+  border: 1px solid rgba(201, 168, 76, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 100px;
+}
+
+.why-accent {
+  position: absolute;
+  bottom: -20px;
+  right: -20px;
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--gold);
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-align: center;
+  color: var(--gold);
+}
+
+.why-content {
+  flex: 1;
+}
+
+.why-list {
+  list-style: none;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.why-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.why-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: rgba(201, 168, 76, 0.2);
+  font-weight: 900;
+  line-height: 1;
+  min-width: 50px;
+}
+
+.why-item h4 {
+  color: var(--white);
+  font-size: 16px;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.why-item p {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* ── CTA BANNER ── */
+.cta-banner {
+  background: linear-gradient(135deg, #1a1200 0%, #2a1e00 50%, #1a1200 100%);
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  padding: 80px 60px;
+  text-align: center;
+}
+
+.cta-banner h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 48px);
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.cta-banner p {
+  color: var(--text);
+  font-size: 16px;
+  margin-bottom: 36px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .services {
+    padding: 70px 24px;
+  }
+
+  .why {
+    flex-direction: column;
+    padding: 70px 24px;
+  }
+
+  .why-visual {
+    flex: none;
+    width: 100%;
+  }
+
+  .cta-banner {
+    padding: 60px 24px;
+  }
+
+  .stats {
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    min-width: 50%;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    align-items: center;
+  }
+}
