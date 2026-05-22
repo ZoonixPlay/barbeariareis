@@ -343,7 +343,7 @@
 <!-- ══ FIREBASE SDK ══ -->
 <script type="module">
 import { initializeApp }      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getFirestore, collection, addDoc, getDocs, doc, updateDoc, query, where, orderBy, onSnapshot, getDoc }
+import { getFirestore, collection, addDoc, doc, updateDoc, query, where, orderBy, onSnapshot, getDoc }
   from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
 // ════════════════════════════════════════════
@@ -493,9 +493,9 @@ function showToast(msg){
 // ════════════════════════════════════════════
 // GET NEXT ID (contador baseado em total de docs)
 // ════════════════════════════════════════════
-async function getNextId(){
-  const snap = await getDocs(collection(db, COL));
-  return snap.size; // 0, 1, 2, 3...
+function getNextId(){
+  // Gera ID único baseado em timestamp — sem depender de leitura extra no Firestore
+  return Date.now();
 }
 
 // ════════════════════════════════════════════
@@ -526,13 +526,14 @@ window.confirmarAgendamento = async function(){
   document.getElementById('loadingBanner').style.display = 'block';
 
   try {
-    const id = await getNextId();
+    const id = getNextId();
     const booking = { id, nome, whatsapp, data, horario:selectedTime, servico:selectedService, preco:selectedPrice, status:'confirmado', criadoEm:new Date().toISOString() };
     await addDoc(collection(db, COL), booking);
 
-    document.getElementById('sum-id').textContent     = `#${String(id).padStart(4,'0')}`;
+    const idDisplay = `#${String(id).slice(-4)}`;
+    document.getElementById('sum-id').textContent     = idDisplay;
     document.getElementById('successDetail').innerHTML = `<strong>${nome}</strong>, seu <strong>${selectedService}</strong> está marcado para<br><strong>${formatDate(data)}</strong> às <strong>${selectedTime}</strong>.<br><br>Aguarde confirmação pelo WhatsApp. ✂`;
-    document.getElementById('successId').textContent  = `#${String(id).padStart(4,'0')}`;
+    document.getElementById('successId').textContent  = idDisplay;
     document.getElementById('successOverlay').classList.add('show');
   } catch(e){
     console.error(e);
