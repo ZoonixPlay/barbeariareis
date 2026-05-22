@@ -8,270 +8,118 @@
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --gold: #C9A84C;
-      --gold-light: #e8c76a;
-      --dark: #080808;
-      --dark2: #101010;
-      --dark3: #181818;
-      --olive: #2e3a1e;
-      --olive2: #3d4a2e;
-      --khaki: #c2b280;
-      --red: #8b1a1a;
-      --red-light: #c0392b;
-      --green: #1a5c2a;
-      --green-light: #27ae60;
-      --text: #c8b89a;
-      --white: #f0ead8;
+      --gold:#C9A84C; --gold-light:#e8c76a;
+      --dark:#080808; --dark2:#101010; --dark3:#181818;
+      --olive:#2e3a1e; --olive2:#3d4a2e; --khaki:#c2b280;
+      --red:#8b1a1a; --red-light:#c0392b;
+      --green:#1a5c2a; --green-light:#27ae60;
+      --text:#c8b89a; --white:#f0ead8;
     }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body {
-      background: var(--dark);
-      color: var(--text);
-      font-family: 'Barlow', sans-serif;
-      min-height: 100vh;
-    }
+    *{margin:0;padding:0;box-sizing:border-box;}
+    body{background:var(--dark);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;}
 
-    /* ── LOGIN SCREEN ── */
-    .login-screen {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      background:
-        radial-gradient(ellipse at 30% 50%, rgba(61,74,46,0.15) 0%, transparent 60%),
-        radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
-        var(--dark);
-    }
-    .login-card {
-      background: var(--dark2); border: 1px solid rgba(201,168,76,0.2);
-      border-top: 4px solid var(--gold);
-      padding: 60px 56px; text-align: center; width: 420px;
-      animation: fadeUp .5s ease;
-    }
-    .login-badge {
-      display: inline-block; background: var(--olive2); color: var(--khaki);
-      font-family: 'Barlow Condensed'; font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
-      padding: 5px 18px; margin-bottom: 24px;
-    }
-    .login-title { font-family: 'Bebas Neue'; font-size: 42px; letter-spacing: 4px; color: var(--white); }
-    .login-sub { font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); margin-bottom: 36px; }
-    .login-input {
-      width: 100%; background: var(--dark3); border: 1px solid rgba(201,168,76,0.12);
-      border-left: 3px solid rgba(201,168,76,0.3); color: var(--white);
-      padding: 14px 18px; font-family: 'Barlow'; font-size: 15px;
-      outline: none; transition: all .25s; margin-bottom: 14px; letter-spacing: 4px; text-align: center;
-    }
-    .login-input:focus { border-left-color: var(--gold); border-color: rgba(201,168,76,0.3); }
-    .login-input::placeholder { letter-spacing: 2px; font-size: 13px; color: rgba(200,184,154,0.3); }
-    .login-btn {
-      width: 100%; padding: 16px; background: var(--gold); color: var(--dark);
-      border: none; cursor: pointer; font-family: 'Bebas Neue'; font-size: 18px; letter-spacing: 4px;
-      transition: all .3s; margin-top: 6px;
-    }
-    .login-btn:hover { background: var(--gold-light); }
-    .login-error { color: #e74c3c; font-size: 12px; letter-spacing: 2px; margin-top: 10px; display: none; font-family: 'Barlow Condensed'; }
+    /* LOGIN */
+    .login-screen{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 30% 50%,rgba(61,74,46,.15) 0%,transparent 60%),radial-gradient(ellipse at 70% 50%,rgba(201,168,76,.08) 0%,transparent 60%),var(--dark);}
+    .login-card{background:var(--dark2);border:1px solid rgba(201,168,76,.2);border-top:4px solid var(--gold);padding:60px 56px;text-align:center;width:420px;animation:fadeUp .5s ease;}
+    .login-badge{display:inline-block;background:var(--olive2);color:var(--khaki);font-family:'Barlow Condensed';font-size:10px;letter-spacing:4px;text-transform:uppercase;padding:5px 18px;margin-bottom:24px;}
+    .login-title{font-family:'Bebas Neue';font-size:42px;letter-spacing:4px;color:var(--white);}
+    .login-sub{font-family:'Barlow Condensed';font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--text);margin-bottom:36px;}
+    .login-input{width:100%;background:var(--dark3);border:1px solid rgba(201,168,76,.12);border-left:3px solid rgba(201,168,76,.3);color:var(--white);padding:14px 18px;font-family:'Barlow';font-size:15px;outline:none;transition:all .25s;margin-bottom:14px;letter-spacing:4px;text-align:center;}
+    .login-input:focus{border-left-color:var(--gold);border-color:rgba(201,168,76,.3);}
+    .login-input::placeholder{letter-spacing:2px;font-size:13px;color:rgba(200,184,154,.3);}
+    .login-btn{width:100%;padding:16px;background:var(--gold);color:var(--dark);border:none;cursor:pointer;font-family:'Bebas Neue';font-size:18px;letter-spacing:4px;transition:all .3s;margin-top:6px;}
+    .login-btn:hover{background:var(--gold-light);}
+    .login-error{color:#e74c3c;font-size:12px;letter-spacing:2px;margin-top:10px;display:none;font-family:'Barlow Condensed';}
 
-    /* ── DASHBOARD ── */
-    .dashboard { display: none; }
+    .dashboard{display:none;}
 
-    /* ── TOP BAR ── */
-    .topbar {
-      background: var(--dark2); border-bottom: 2px solid var(--gold);
-      padding: 0 40px; display: flex; align-items: center; justify-content: space-between;
-      height: 64px; position: sticky; top: 0; z-index: 99;
-    }
-    .topbar-left { display: flex; align-items: center; gap: 24px; }
-    .topbar-logo { font-family: 'Bebas Neue'; font-size: 24px; letter-spacing: 4px; color: var(--white); }
-    .topbar-logo span { color: var(--gold); }
-    .admin-badge {
-      background: var(--olive2); color: var(--khaki);
-      font-family: 'Barlow Condensed'; font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-      padding: 4px 12px;
-    }
-    .topbar-right { display: flex; align-items: center; gap: 16px; }
-    .btn-logout {
-      background: transparent; border: 1px solid rgba(201,168,76,0.3); color: var(--gold);
-      padding: 7px 18px; cursor: pointer; font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
-      transition: all .3s;
-    }
-    .btn-logout:hover { background: rgba(201,168,76,0.1); }
+    /* TOPBAR */
+    .topbar{background:var(--dark2);border-bottom:2px solid var(--gold);padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:99;}
+    .topbar-left{display:flex;align-items:center;gap:24px;}
+    .topbar-logo{font-family:'Bebas Neue';font-size:24px;letter-spacing:4px;color:var(--white);}
+    .topbar-logo span{color:var(--gold);}
+    .admin-badge{background:var(--olive2);color:var(--khaki);font-family:'Barlow Condensed';font-size:10px;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;}
+    .topbar-right{display:flex;align-items:center;gap:16px;}
+    .btn-logout{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);padding:7px 18px;cursor:pointer;font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:all .3s;}
+    .btn-logout:hover{background:rgba(201,168,76,.1);}
 
-    /* ── STATS ROW ── */
-    .stats-row {
-      display: grid; grid-template-columns: repeat(5, 1fr);
-      border-bottom: 1px solid rgba(201,168,76,0.1);
-    }
-    .stat-box {
-      padding: 28px 32px; border-right: 1px solid rgba(201,168,76,0.08);
-      position: relative;
-    }
-    .stat-box:last-child { border-right: none; }
-    .stat-num { font-family: 'Bebas Neue'; font-size: 44px; line-height: 1; }
-    .stat-num.gold { color: var(--gold); }
-    .stat-num.green { color: var(--green-light); }
-    .stat-num.red { color: var(--red-light); }
-    .stat-num.white { color: var(--white); }
-    .stat-label { font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--text); margin-top: 4px; }
+    /* STATS */
+    .stats-row{display:grid;grid-template-columns:repeat(5,1fr);border-bottom:1px solid rgba(201,168,76,.1);}
+    .stat-box{padding:28px 32px;border-right:1px solid rgba(201,168,76,.08);}
+    .stat-box:last-child{border-right:none;}
+    .stat-num{font-family:'Bebas Neue';font-size:44px;line-height:1;}
+    .stat-num.gold{color:var(--gold);} .stat-num.green{color:var(--green-light);} .stat-num.red{color:var(--red-light);} .stat-num.white{color:var(--white);}
+    .stat-label{font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--text);margin-top:4px;}
 
-    /* ── FILTERS ── */
-    .controls {
-      padding: 24px 40px; background: var(--dark2); border-bottom: 1px solid rgba(201,168,76,0.08);
-      display: flex; gap: 16px; align-items: center; flex-wrap: wrap;
-    }
-    .ctrl-label { font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); }
-    .filter-btn {
-      background: var(--dark3); border: 1px solid rgba(201,168,76,0.1);
-      color: var(--text); padding: 8px 20px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
-      transition: all .2s;
-    }
-    .filter-btn:hover, .filter-btn.active { background: var(--gold); color: var(--dark); border-color: var(--gold); }
-    .ctrl-input {
-      background: var(--dark3); border: 1px solid rgba(201,168,76,0.1);
-      border-left: 2px solid var(--gold);
-      color: var(--white); padding: 8px 14px;
-      font-family: 'Barlow'; font-size: 13px; outline: none; min-width: 180px;
-    }
-    .ctrl-input:focus { border-color: rgba(201,168,76,0.3); }
-    .ctrl-input::placeholder { color: rgba(200,184,154,0.3); }
+    /* CONTROLS */
+    .controls{padding:24px 40px;background:var(--dark2);border-bottom:1px solid rgba(201,168,76,.08);display:flex;gap:16px;align-items:center;flex-wrap:wrap;}
+    .ctrl-label{font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);}
+    .filter-btn{background:var(--dark3);border:1px solid rgba(201,168,76,.1);color:var(--text);padding:8px 20px;cursor:pointer;font-family:'Barlow Condensed';font-size:13px;letter-spacing:2px;text-transform:uppercase;transition:all .2s;}
+    .filter-btn:hover,.filter-btn.active{background:var(--gold);color:var(--dark);border-color:var(--gold);}
+    .ctrl-input{background:var(--dark3);border:1px solid rgba(201,168,76,.1);border-left:2px solid var(--gold);color:var(--white);padding:8px 14px;font-family:'Barlow';font-size:13px;outline:none;min-width:180px;}
+    .ctrl-input:focus{border-color:rgba(201,168,76,.3);}
+    .ctrl-input::placeholder{color:rgba(200,184,154,.3);}
+    .date-filter{display:flex;align-items:center;gap:10px;margin-left:auto;}
+    .date-filter-label{font-family:'Barlow Condensed';font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--text);}
 
-    /* ── TABLE ── */
-    .table-wrap { padding: 32px 40px; }
-    .table-head-row {
-      display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
-    }
-    .table-title { font-family: 'Bebas Neue'; font-size: 22px; letter-spacing: 3px; color: var(--white); }
-    .count-badge { background: rgba(201,168,76,0.12); color: var(--gold); font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 2px; padding: 4px 12px; }
+    /* TABLE */
+    .table-wrap{padding:32px 40px;}
+    .table-head-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;}
+    .table-title{font-family:'Bebas Neue';font-size:22px;letter-spacing:3px;color:var(--white);}
+    .count-badge{background:rgba(201,168,76,.12);color:var(--gold);font-family:'Barlow Condensed';font-size:12px;letter-spacing:2px;padding:4px 12px;}
+    table{width:100%;border-collapse:collapse;}
+    thead th{background:var(--dark2);padding:14px 16px;text-align:left;font-family:'Barlow Condensed';font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:2px solid rgba(201,168,76,.15);white-space:nowrap;}
+    tbody tr{border-bottom:1px solid rgba(201,168,76,.05);transition:background .2s;}
+    tbody tr:hover{background:rgba(201,168,76,.03);}
+    tbody tr.cancelado{opacity:.45;}
+    tbody td{padding:14px 16px;font-size:14px;vertical-align:middle;}
+    .td-id{font-family:'Bebas Neue';font-size:18px;color:var(--gold);letter-spacing:2px;}
+    .td-name{font-weight:600;color:var(--white);}
+    .td-phone{font-family:'Barlow Condensed';letter-spacing:1px;}
+    .td-service{font-family:'Barlow Condensed';font-size:13px;letter-spacing:1px;color:var(--khaki);}
+    .td-datetime{font-family:'Barlow Condensed';font-size:13px;}
+    .td-price{font-family:'Bebas Neue';font-size:18px;color:var(--gold-light);}
 
-    table { width: 100%; border-collapse: collapse; }
-    thead th {
-      background: var(--dark2); padding: 14px 16px; text-align: left;
-      font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-      color: var(--gold); border-bottom: 2px solid rgba(201,168,76,0.15);
-      white-space: nowrap;
-    }
-    tbody tr {
-      border-bottom: 1px solid rgba(201,168,76,0.05);
-      transition: background .2s;
-    }
-    tbody tr:hover { background: rgba(201,168,76,0.03); }
-    tbody tr.cancelado { opacity: 0.45; }
-    tbody td { padding: 14px 16px; font-size: 14px; vertical-align: middle; }
-    .td-id { font-family: 'Bebas Neue'; font-size: 18px; color: var(--gold); letter-spacing: 2px; }
-    .td-name { font-weight: 600; color: var(--white); }
-    .td-phone { font-family: 'Barlow Condensed'; letter-spacing: 1px; }
-    .td-service { font-family: 'Barlow Condensed'; font-size: 13px; letter-spacing: 1px; color: var(--khaki); }
-    .td-datetime { font-family: 'Barlow Condensed'; font-size: 13px; }
-    .td-price { font-family: 'Bebas Neue'; font-size: 18px; color: var(--gold-light); }
+    .badge{display:inline-block;padding:4px 12px;font-family:'Barlow Condensed';font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;}
+    .badge-confirmado{background:rgba(26,92,42,.3);color:var(--green-light);border:1px solid rgba(39,174,96,.3);}
+    .badge-cancelado{background:rgba(139,26,26,.2);color:#e74c3c;border:1px solid rgba(231,76,60,.2);}
+    .badge-finalizado{background:rgba(20,80,140,.25);color:#5dade2;border:1px solid rgba(93,173,226,.3);}
 
-    /* STATUS BADGES */
-    .badge {
-      display: inline-block; padding: 4px 12px;
-      font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700;
-    }
-    .badge-confirmado { background: rgba(26,92,42,0.3); color: var(--green-light); border: 1px solid rgba(39,174,96,0.3); }
-    .badge-cancelado { background: rgba(139,26,26,0.2); color: #e74c3c; border: 1px solid rgba(231,76,60,0.2); }
-    .badge-finalizado { background: rgba(20,80,140,0.25); color: #5dade2; border: 1px solid rgba(93,173,226,0.3); }
+    .actions{display:flex;gap:8px;flex-wrap:wrap;}
+    .btn-wpp{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);color:#25d366;padding:6px 12px;cursor:pointer;font-family:'Barlow Condensed';font-size:12px;letter-spacing:1px;transition:all .2s;display:flex;align-items:center;gap:5px;text-decoration:none;}
+    .btn-wpp:hover{background:rgba(37,211,102,.25);}
+    .btn-cancel{background:rgba(139,26,26,.15);border:1px solid rgba(139,26,26,.3);color:#e74c3c;padding:6px 12px;cursor:pointer;font-family:'Barlow Condensed';font-size:12px;letter-spacing:1px;transition:all .2s;}
+    .btn-cancel:hover{background:rgba(139,26,26,.3);}
+    .btn-cancel:disabled{opacity:.3;cursor:not-allowed;}
+    .btn-finish{background:rgba(20,80,140,.18);border:1px solid rgba(93,173,226,.3);color:#5dade2;padding:6px 12px;cursor:pointer;font-family:'Barlow Condensed';font-size:12px;letter-spacing:1px;transition:all .2s;}
+    .btn-finish:hover{background:rgba(93,173,226,.25);}
+    .btn-finish:disabled{opacity:.3;cursor:not-allowed;}
 
-    /* ACTION BUTTONS */
-    .actions { display: flex; gap: 8px; }
-    .btn-wpp {
-      background: rgba(37,211,102,0.12); border: 1px solid rgba(37,211,102,0.3);
-      color: #25d366; padding: 6px 12px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 1px;
-      transition: all .2s; display: flex; align-items: center; gap: 5px;
-      text-decoration: none;
-    }
-    .btn-wpp:hover { background: rgba(37,211,102,0.25); }
-    .btn-cancel {
-      background: rgba(139,26,26,0.15); border: 1px solid rgba(139,26,26,0.3);
-      color: #e74c3c; padding: 6px 12px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 1px;
-      transition: all .2s;
-    }
-    .btn-cancel:hover { background: rgba(139,26,26,0.3); }
-    .btn-cancel:disabled { opacity: 0.3; cursor: not-allowed; }
-    .btn-delete {
-      background: rgba(80,20,80,0.18); border: 1px solid rgba(180,60,180,0.3);
-      color: #c678dd; padding: 6px 12px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 1px;
-      transition: all .2s;
-    }
-    .btn-delete:hover { background: rgba(180,60,180,0.28); }
-    .btn-finish {
-      background: rgba(20,80,140,0.18); border: 1px solid rgba(93,173,226,0.3);
-      color: #5dade2; padding: 6px 12px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 1px;
-      transition: all .2s;
-    }
-    .btn-finish:hover { background: rgba(93,173,226,0.25); }
-    .btn-finish:disabled { opacity: 0.3; cursor: not-allowed; }
+    .empty-state{text-align:center;padding:80px 40px;color:rgba(200,184,154,.3);}
+    .empty-icon{font-size:56px;margin-bottom:16px;}
+    .empty-text{font-family:'Bebas Neue';font-size:24px;letter-spacing:3px;}
+    .today-chip{background:rgba(201,168,76,.1);color:var(--gold);font-family:'Barlow Condensed';font-size:10px;letter-spacing:2px;padding:2px 8px;display:inline-block;}
 
-    .btn-view-txt {
-      background: rgba(155,89,182,0.15); border: 1px solid rgba(155,89,182,0.3);
-      color: #c678dd; padding: 6px 12px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 1px;
-      transition: all .2s;
-    }
-    .btn-view-txt:hover { background: rgba(155,89,182,0.28); }
+    /* MODAL */
+    .modal-overlay{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.88);align-items:center;justify-content:center;}
+    .modal-overlay.show{display:flex;}
+    .modal-card{background:var(--dark2);border:1px solid rgba(139,26,26,.4);border-top:4px solid var(--red-light);padding:40px 48px;text-align:center;max-width:400px;animation:popIn .3s ease;}
+    .modal-title{font-family:'Bebas Neue';font-size:28px;letter-spacing:3px;color:#e74c3c;margin-bottom:12px;}
+    .modal-text{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:28px;}
+    .modal-btns{display:flex;gap:12px;justify-content:center;}
+    .modal-confirm{background:var(--red-light);color:#fff;border:none;cursor:pointer;padding:12px 28px;font-family:'Bebas Neue';font-size:16px;letter-spacing:3px;transition:all .3s;}
+    .modal-confirm:hover{background:#c0392b;}
+    .modal-cancel-btn{background:transparent;border:1px solid rgba(201,168,76,.3);color:var(--gold);cursor:pointer;padding:12px 28px;font-family:'Bebas Neue';font-size:16px;letter-spacing:3px;transition:all .3s;}
+    .modal-cancel-btn:hover{background:rgba(201,168,76,.1);}
 
-    .btn-view-pretty {
-      background: rgba(52,152,219,0.15); border: 1px solid rgba(52,152,219,0.3);
-      color: #3498db; padding: 6px 12px; cursor: pointer;
-      font-family: 'Barlow Condensed'; font-size: 12px; letter-spacing: 1px;
-      transition: all .2s;
-    }
-    .btn-view-pretty:hover { background: rgba(52,152,219,0.28); }
-
-    /* EMPTY STATE */
-    .empty-state {
-      text-align: center; padding: 80px 40px; color: rgba(200,184,154,0.3);
-    }
-    .empty-icon { font-size: 56px; margin-bottom: 16px; }
-    .empty-text { font-family: 'Bebas Neue'; font-size: 24px; letter-spacing: 3px; }
-
-    /* TODAY HIGHLIGHT */
-    .today-chip {
-      background: rgba(201,168,76,0.1); color: var(--gold);
-      font-family: 'Barlow Condensed'; font-size: 10px; letter-spacing: 2px;
-      padding: 2px 8px; display: inline-block;
-    }
-
-    /* CONFIRM MODAL */
-    .modal-overlay {
-      display: none; position: fixed; inset: 0; z-index: 9999;
-      background: rgba(0,0,0,0.88); align-items: center; justify-content: center;
-    }
-    .modal-overlay.show { display: flex; }
-    .modal-card {
-      background: var(--dark2); border: 1px solid rgba(139,26,26,0.4);
-      border-top: 4px solid var(--red-light); padding: 40px 48px; text-align: center;
-      max-width: 400px; animation: popIn .3s ease;
-    }
-    .modal-title { font-family: 'Bebas Neue'; font-size: 28px; letter-spacing: 3px; color: #e74c3c; margin-bottom: 12px; }
-    .modal-text { font-size: 14px; color: var(--text); line-height: 1.7; margin-bottom: 28px; }
-    .modal-btns { display: flex; gap: 12px; justify-content: center; }
-    .modal-confirm { background: var(--red-light); color: #fff; border: none; cursor: pointer; padding: 12px 28px; font-family: 'Bebas Neue'; font-size: 16px; letter-spacing: 3px; transition: all .3s; }
-    .modal-confirm:hover { background: #c0392b; }
-    .modal-cancel-btn { background: transparent; border: 1px solid rgba(201,168,76,0.3); color: var(--gold); cursor: pointer; padding: 12px 28px; font-family: 'Bebas Neue'; font-size: 16px; letter-spacing: 3px; transition: all .3s; }
-    .modal-cancel-btn:hover { background: rgba(201,168,76,0.1); }
-
-    /* ANIMATIONS */
-    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:none} }
-    @keyframes popIn { from{opacity:0;transform:scale(0.85)} to{opacity:1;transform:scale(1)} }
-
-    /* DATE FILTER */
-    .date-filter { display: flex; align-items: center; gap: 10px; margin-left: auto; }
-    .date-filter-label { font-family: 'Barlow Condensed'; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text); }
-
-    /* SCROLL */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); }
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+    @keyframes popIn{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+    ::-webkit-scrollbar{width:6px;} ::-webkit-scrollbar-track{background:var(--dark);} ::-webkit-scrollbar-thumb{background:rgba(201,168,76,.3);}
   </style>
 </head>
 <body>
 
-<!-- ══════════════ LOGIN ══════════════ -->
+<!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
   <div class="login-card">
     <div class="login-badge">🪖 Acesso Restrito</div>
@@ -283,10 +131,8 @@
   </div>
 </div>
 
-<!-- ══════════════ DASHBOARD ══════════════ -->
+<!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
-
-  <!-- TOP BAR -->
   <div class="topbar">
     <div class="topbar-left">
       <div class="topbar-logo">Barbearia <span>Reis</span></div>
@@ -298,41 +144,22 @@
     </div>
   </div>
 
-  <!-- STATS -->
-  <div class="stats-row" id="statsRow">
-    <div class="stat-box">
-      <div class="stat-num white" id="statTotal">0</div>
-      <div class="stat-label">Total de Agendamentos</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num green" id="statHoje">0</div>
-      <div class="stat-label">Agendamentos Hoje</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num gold" id="statConfirmados">0</div>
-      <div class="stat-label">Confirmados</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num red" id="statCancelados">0</div>
-      <div class="stat-label">Cancelados</div>
-    </div>
-    <div class="stat-box">
-      <div class="stat-num" id="statFinalizados" style="color:#5dade2">0</div>
-      <div class="stat-label">Finalizados</div>
-    </div>
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num white" id="statTotal">—</div><div class="stat-label">Total</div></div>
+    <div class="stat-box"><div class="stat-num green" id="statHoje">—</div><div class="stat-label">Hoje</div></div>
+    <div class="stat-box"><div class="stat-num gold" id="statConfirmados">—</div><div class="stat-label">Confirmados</div></div>
+    <div class="stat-box"><div class="stat-num red" id="statCancelados">—</div><div class="stat-label">Cancelados</div></div>
+    <div class="stat-box"><div class="stat-num" id="statFinalizados" style="color:#5dade2">—</div><div class="stat-label">Finalizados</div></div>
   </div>
 
-  <!-- CONTROLS -->
   <div class="controls">
     <span class="ctrl-label">Filtrar:</span>
-    <button class="filter-btn active" onclick="setFilter('todos', this)">Todos</button>
-    <button class="filter-btn" onclick="setFilter('confirmado', this)">Confirmados</button>
-    <button class="filter-btn" onclick="setFilter('cancelado', this)">Cancelados</button>
-    <button class="filter-btn" onclick="setFilter('finalizado', this)">✔ Finalizados</button>
-    <button class="filter-btn" onclick="setFilter('hoje', this)">📅 Hoje</button>
-
+    <button class="filter-btn active" onclick="setFilter('todos',this)">Todos</button>
+    <button class="filter-btn" onclick="setFilter('confirmado',this)">Confirmados</button>
+    <button class="filter-btn" onclick="setFilter('cancelado',this)">Cancelados</button>
+    <button class="filter-btn" onclick="setFilter('finalizado',this)">✔ Finalizados</button>
+    <button class="filter-btn" onclick="setFilter('hoje',this)">📅 Hoje</button>
     <input type="text" class="ctrl-input" id="searchInput" placeholder="🔍 Buscar nome ou serviço..." oninput="renderTable()">
-
     <div class="date-filter">
       <span class="date-filter-label">Data:</span>
       <input type="date" class="ctrl-input" id="dateFilter" style="min-width:140px" onchange="renderTable()">
@@ -340,38 +167,22 @@
     </div>
   </div>
 
-  <!-- TABLE -->
   <div class="table-wrap">
     <div class="table-head-row">
       <div class="table-title">// REGISTRO DE AGENDAMENTOS</div>
-      <div class="count-badge" id="countBadge">0 registros</div>
+      <div class="count-badge" id="countBadge">carregando...</div>
     </div>
-
     <div id="tableContainer">
-      <div class="empty-state">
-        <div class="empty-icon">📋</div>
-        <div class="empty-text">Nenhum agendamento ainda</div>
-      </div>
-    </div>
-  </div>
-
-</div>
-
-<!-- DELETE CONFIRM MODAL -->
-<div class="modal-overlay" id="deleteModal">
-  <div class="modal-card">
-    <div class="modal-title" style="color:#c678dd;border-top-color:#c678dd;">EXCLUIR REGISTRO</div>
-    <div class="modal-text" id="deleteModalText">Tem certeza que deseja excluir este registro permanentemente?<br>Esta ação não pode ser desfeita.</div>
-    <div class="modal-btns">
-      <button class="modal-confirm" style="background:#7d3c98;" onclick="executarExclusao()">SIM, EXCLUIR</button>
-      <button class="modal-cancel-btn" onclick="fecharModalExcluir()">NÃO</button>
+      <div class="empty-state"><div class="empty-icon">⏳</div><div class="empty-text">Carregando...</div></div>
     </div>
   </div>
 </div>
+
+<!-- CANCEL MODAL -->
 <div class="modal-overlay" id="cancelModal">
   <div class="modal-card">
     <div class="modal-title">CANCELAR AGENDAMENTO</div>
-    <div class="modal-text" id="cancelModalText">Tem certeza que deseja cancelar este agendamento?<br>O horário será liberado novamente.</div>
+    <div class="modal-text" id="cancelModalText">Tem certeza que deseja cancelar?<br>O horário será liberado.</div>
     <div class="modal-btns">
       <button class="modal-confirm" onclick="executarCancelamento()">SIM, CANCELAR</button>
       <button class="modal-cancel-btn" onclick="fecharModal()">NÃO</button>
@@ -379,508 +190,202 @@
   </div>
 </div>
 
-<script>
-  // ── CONFIG ──
-  const SENHA = 'reis'; // Altere a senha aqui!
-  let currentFilter = 'todos';
-  let cancelTarget = null;
+<!-- ══ FIREBASE SDK ══ -->
+<script type="module">
+import { initializeApp }      from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs, doc, updateDoc, onSnapshot, orderBy, query }
+  from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  // ── LOGIN ──
-  function entrar() {
-    const val = document.getElementById('senhaInput').value;
-    if (val === SENHA) {
-      document.getElementById('loginScreen').style.display = 'none';
-      document.getElementById('dashboard').style.display = 'block';
-      initDashboard();
-    } else {
-      document.getElementById('loginError').style.display = 'block';
-      document.getElementById('senhaInput').value = '';
-      document.getElementById('senhaInput').focus();
-    }
+// ════════════════════════════════════════════
+// 🔥 MESMA CONFIGURAÇÃO DO agendamento.html
+// ════════════════════════════════════════════
+const firebaseConfig = {
+  apiKey:            "COLE_SUA_API_KEY_AQUI",
+  authDomain:        "COLE_SEU_AUTH_DOMAIN_AQUI",
+  projectId:         "COLE_SEU_PROJECT_ID_AQUI",
+  storageBucket:     "COLE_SEU_STORAGE_BUCKET_AQUI",
+  messagingSenderId: "COLE_SEU_SENDER_ID_AQUI",
+  appId:             "COLE_SEU_APP_ID_AQUI"
+};
+
+const app = initializeApp(firebaseConfig);
+const db  = getFirestore(app);
+const COL = "agendamentos";
+
+// ════════════════════════════════════════════
+// STATE
+// ════════════════════════════════════════════
+const SENHA       = 'reis'; // ← Troque a senha aqui
+let currentFilter = 'todos';
+let cancelTarget  = null; // { docId, booking }
+let allBookings   = [];   // cache local
+
+// ════════════════════════════════════════════
+// LOGIN
+// ════════════════════════════════════════════
+window.entrar = function(){
+  const val = document.getElementById('senhaInput').value;
+  if(val === SENHA){
+    document.getElementById('loginScreen').style.display='none';
+    document.getElementById('dashboard').style.display='block';
+    initDashboard();
+  } else {
+    document.getElementById('loginError').style.display='block';
+    document.getElementById('senhaInput').value='';
+    document.getElementById('senhaInput').focus();
   }
+};
+window.sair = function(){
+  document.getElementById('loginScreen').style.display='flex';
+  document.getElementById('dashboard').style.display='none';
+  document.getElementById('senhaInput').value='';
+  document.getElementById('loginError').style.display='none';
+};
 
-  function sair() {
-    document.getElementById('loginScreen').style.display = 'flex';
-    document.getElementById('dashboard').style.display = 'none';
-    document.getElementById('senhaInput').value = '';
-    document.getElementById('loginError').style.display = 'none';
-  }
+// ════════════════════════════════════════════
+// CLOCK
+// ════════════════════════════════════════════
+function updateClock(){
+  const now=new Date(); const opts={weekday:'short',day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'};
+  document.getElementById('topDateTime').textContent=now.toLocaleString('pt-BR',opts).toUpperCase();
+}
 
-  // ── STORAGE ──
-  function getBookings() {
-    try { return JSON.parse(localStorage.getItem('reisBookings') || '[]'); } catch(e) { return []; }
-  }
-  function saveBookings(arr) {
-    localStorage.setItem('reisBookings', JSON.stringify(arr));
-  }
+// ════════════════════════════════════════════
+// INIT — escuta em tempo real o Firestore
+// ════════════════════════════════════════════
+function initDashboard(){
+  updateClock(); setInterval(updateClock,30000);
 
-  // ── DATE / TIME ──
-  function todayStr() {
-    return new Date().toISOString().split('T')[0];
-  }
-  function formatDate(d) {
-    if (!d) return '—';
-    const [y,m,day] = d.split('-');
-    return `${day}/${m}/${y}`;
-  }
-  function updateClock() {
-    const now = new Date();
-    const opts = { weekday:'short', day:'2-digit', month:'2-digit', hour:'2-digit', minute:'2-digit' };
-    document.getElementById('topDateTime').textContent = now.toLocaleString('pt-BR', opts).toUpperCase();
-  }
-
-  // ── STATS ──
-  function updateStats() {
-    const bookings = getBookings();
-    const today = todayStr();
-    document.getElementById('statTotal').textContent = bookings.length;
-    document.getElementById('statHoje').textContent = bookings.filter(b => b.data === today && b.status !== 'cancelado').length;
-    document.getElementById('statConfirmados').textContent = bookings.filter(b => b.status === 'confirmado').length;
-    document.getElementById('statCancelados').textContent = bookings.filter(b => b.status === 'cancelado').length;
-    document.getElementById('statFinalizados').textContent = bookings.filter(b => b.status === 'finalizado').length;
-  }
-
-  // ── FILTER ──
-  function setFilter(f, btn) {
-    currentFilter = f;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderTable();
-  }
-
-  // ── RENDER TABLE ──
-  function renderTable() {
-    let bookings = getBookings();
-    const search = document.getElementById('searchInput').value.toLowerCase().trim();
-    const dateF = document.getElementById('dateFilter').value;
-    const today = todayStr();
-
-    // Filter
-    if (currentFilter === 'confirmado') bookings = bookings.filter(b => b.status === 'confirmado');
-    else if (currentFilter === 'cancelado') bookings = bookings.filter(b => b.status === 'cancelado');
-    else if (currentFilter === 'finalizado') bookings = bookings.filter(b => b.status === 'finalizado');
-    else if (currentFilter === 'hoje') bookings = bookings.filter(b => b.data === today);
-
-    if (search) bookings = bookings.filter(b =>
-      b.nome.toLowerCase().includes(search) ||
-      b.servico.toLowerCase().includes(search) ||
-      b.whatsapp.includes(search)
-    );
-    if (dateF) bookings = bookings.filter(b => b.data === dateF);
-
-    // Sort: most recent first
-    bookings = [...bookings].sort((a, b) => {
-      if (a.data !== b.data) return b.data.localeCompare(a.data);
-      return b.horario.localeCompare(a.horario);
-    });
-
-    document.getElementById('countBadge').textContent = `${bookings.length} registro${bookings.length !== 1 ? 's' : ''}`;
-
-    if (bookings.length === 0) {
-      document.getElementById('tableContainer').innerHTML = `
-        <div class="empty-state">
-          <div class="empty-icon">🔍</div>
-          <div class="empty-text">Nenhum registro encontrado</div>
-        </div>`;
-      return;
-    }
-
-    let rows = bookings.map(b => {
-      const isToday = b.data === today;
-      const isCanceled = b.status === 'cancelado';
-      const isFinished = b.status === 'finalizado';
-      const isDone = isCanceled || isFinished;
-      const wppNum = b.whatsapp.replace(/\D/g,'');
-      const wppMsg = encodeURIComponent(
-        `Olá ${b.nome}! 👋\n✂ Seu agendamento na *Barbearia Reis* está confirmado!\n\n📅 Data: ${formatDate(b.data)}\n⏰ Horário: ${b.horario}\n💈 Serviço: ${b.servico}\n💰 Valor: ${b.preco}\n\nTe esperamos! 🪖`
-      );
-      const wppLink = `https://wa.me/55${wppNum}?text=${wppMsg}`;
-
-      return `
-        <tr class="${isCanceled ? 'cancelado' : ''}">
-          <td class="td-id">#${String(b.id).padStart(4,'0')}</td>
-          <td class="td-name">
-            ${b.nome}
-            ${isToday && !isDone ? '<br><span class="today-chip">HOJE</span>' : ''}
-          </td>
-          <td class="td-phone">${b.whatsapp}</td>
-          <td class="td-service">${b.servico}</td>
-          <td class="td-datetime">
-            <span style="color:var(--white)">${formatDate(b.data)}</span><br>
-            <span style="color:var(--gold)">${b.horario}</span>
-          </td>
-          <td class="td-price">${b.preco}</td>
-          <td><span class="badge badge-${b.status}">${b.status}</span></td>
-          <td>
-            <div class="actions">
-              <a href="${wppLink}" target="_blank" class="btn-wpp" title="Enviar mensagem">
-                📱 WhatsApp
-              </a>
-              <button class="btn-finish" onclick="finalizarCorte(${b.id})" ${isDone ? 'disabled' : ''} title="Marcar como finalizado">
-                ✔ Finalizado
-              </button>
-              <button class="btn-cancel" onclick="pedirCancelar(${b.id})" ${isDone ? 'disabled' : ''} title="Cancelar agendamento">
-                ✕ Cancelar
-              </button>
-              <button class="btn-delete" onclick="pedirExcluir(${b.id})" title="Excluir registro permanentemente">
-                🗑 Excluir
-              </button>
-              <button class="btn-view-txt" onclick="visualizarTxt(${b.id})" title="Visualizar em texto">
-                📄 TXT
-              </button>
-              <button class="btn-view-pretty" onclick="visualizarBonito(${b.id})" title="Visualizar em formato bonito">
-                👁 Ver
-              </button>
-            </div>
-          </td>
-        </tr>`;
-    }).join('');
-
-    document.getElementById('tableContainer').innerHTML = `
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Cliente</th>
-            <th>WhatsApp</th>
-            <th>Serviço</th>
-            <th>Data / Hora</th>
-            <th>Valor</th>
-            <th>Status</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>${rows}</tbody>
-      </table>`;
-
+  const q = query(collection(db, COL));
+  onSnapshot(q, snap => {
+    allBookings = snap.docs.map(d => ({ docId: d.id, ...d.data() }));
     updateStats();
-  }
-
-  // ── FINALIZAR ──
-  function finalizarCorte(id) {
-    const bookings = getBookings();
-    const idx = bookings.findIndex(b => b.id === id);
-    if (idx >= 0) {
-      bookings[idx].status = 'finalizado';
-      saveBookings(bookings);
-      renderTable();
-    }
-  }
-
-  // ── CANCEL ──
-  function pedirCancelar(id) {
-    const b = getBookings().find(x => x.id === id);
-    if (!b) return;
-    cancelTarget = id;
-    document.getElementById('cancelModalText').innerHTML =
-      `Cancelar agendamento de <strong style="color:var(--white)">${b.nome}</strong>?<br>
-       <strong style="color:var(--gold)">${b.servico}</strong> · ${formatDate(b.data)} às ${b.horario}<br><br>
-       <small>O horário será liberado para novos agendamentos.</small>`;
-    document.getElementById('cancelModal').classList.add('show');
-  }
-
-  function fecharModal() {
-    document.getElementById('cancelModal').classList.remove('show');
-    cancelTarget = null;
-  }
-
-  // ── DELETE ──
-  let deleteTarget = null;
-  function pedirExcluir(id) {
-    const b = getBookings().find(x => x.id === id);
-    if (!b) return;
-    deleteTarget = id;
-    document.getElementById('deleteModalText').innerHTML =
-      `Excluir permanentemente o registro de <strong style="color:var(--white)">${b.nome}</strong>?<br>
-       <strong style="color:#c678dd">${b.servico}</strong> · ${formatDate(b.data)} às ${b.horario}<br><br>
-       <small style="color:#e74c3c">&#9888; Esta ação não pode ser desfeita.</small>`;
-    document.getElementById('deleteModal').classList.add('show');
-  }
-  function fecharModalExcluir() {
-    document.getElementById('deleteModal').classList.remove('show');
-    deleteTarget = null;
-  }
-  function executarExclusao() {
-    if (deleteTarget === null) return;
-    const bookings = getBookings().filter(b => b.id !== deleteTarget);
-    saveBookings(bookings);
-    fecharModalExcluir();
     renderTable();
-  }
-
-  function executarCancelamento() {
-    if (cancelTarget === null) return;
-    const bookings = getBookings();
-    const idx = bookings.findIndex(b => b.id === cancelTarget);
-    if (idx >= 0) {
-      bookings[idx].status = 'cancelado';
-      saveBookings(bookings);
-    }
-    fecharModal();
-    renderTable();
-  }
-
-  // ── INIT ──
-  function initDashboard() {
-    updateClock();
-    setInterval(updateClock, 30000);
-    setInterval(() => { updateStats(); renderTable(); }, 5000); // auto-refresh
-    renderTable();
-    updateStats();
-  }
-
-  // ── KEYBOARD ──
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { fecharModal(); fecharModalExcluir(); }
+  }, err => {
+    console.error(err);
+    document.getElementById('tableContainer').innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-text">Erro ao carregar dados</div></div>';
   });
+}
 
-  // ── VISUALIZAR TXT ──
-  function visualizarTxt(id) {
-    const b = getBookings().find(x => x.id === id);
-    if (!b) return;
-    
-    const txt = `
-════════════════════════════════════════
-         AGENDAMENTO #${String(b.id).padStart(4, '0')}
-════════════════════════════════════════
+// ════════════════════════════════════════════
+// STATS
+// ════════════════════════════════════════════
+function todayStr(){ return new Date().toISOString().split('T')[0]; }
+function updateStats(){
+  const t = todayStr();
+  document.getElementById('statTotal').textContent       = allBookings.length;
+  document.getElementById('statHoje').textContent        = allBookings.filter(b=>b.data===t&&b.status!=='cancelado').length;
+  document.getElementById('statConfirmados').textContent = allBookings.filter(b=>b.status==='confirmado').length;
+  document.getElementById('statCancelados').textContent  = allBookings.filter(b=>b.status==='cancelado').length;
+  document.getElementById('statFinalizados').textContent = allBookings.filter(b=>b.status==='finalizado').length;
+}
 
-CLIENTE: ${b.nome}
-WHATSAPP: ${b.whatsapp}
+// ════════════════════════════════════════════
+// FILTER
+// ════════════════════════════════════════════
+window.setFilter = function(f, btn){
+  currentFilter=f;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  renderTable();
+};
 
-SERVIÇO: ${b.servico}
-VALOR: ${b.preco}
+function formatDate(d){ if(!d)return'—'; const[y,m,day]=d.split('-'); return`${day}/${m}/${y}`; }
 
-DATA: ${formatDate(b.data)}
-HORÁRIO: ${b.horario}
+// ════════════════════════════════════════════
+// RENDER TABLE
+// ════════════════════════════════════════════
+window.renderTable = function(){
+  let list = [...allBookings];
+  const t      = todayStr();
+  const search = document.getElementById('searchInput').value.toLowerCase().trim();
+  const dateF  = document.getElementById('dateFilter').value;
 
-STATUS: ${b.status.toUpperCase()}
+  if(currentFilter==='confirmado') list=list.filter(b=>b.status==='confirmado');
+  else if(currentFilter==='cancelado') list=list.filter(b=>b.status==='cancelado');
+  else if(currentFilter==='finalizado') list=list.filter(b=>b.status==='finalizado');
+  else if(currentFilter==='hoje') list=list.filter(b=>b.data===t);
 
-════════════════════════════════════════
-CRIADO EM: ${new Date(b.criadoEm).toLocaleString('pt-BR')}
-════════════════════════════════════════
-    `;
+  if(search) list=list.filter(b=>b.nome.toLowerCase().includes(search)||b.servico.toLowerCase().includes(search)||b.whatsapp.includes(search));
+  if(dateF)  list=list.filter(b=>b.data===dateF);
 
-    const popup = window.open('', 'TXT_VIEW', 'width=600,height=700');
-    popup.document.write(`
-      <html>
-        <head>
-          <meta charset="UTF-8">
-          <title>Agendamento #${String(b.id).padStart(4, '0')}</title>
-          <style>
-            body { font-family: 'Courier New', monospace; background: #1a1a1a; color: #c8b89a; padding: 20px; }
-            pre { white-space: pre-wrap; word-wrap: break-word; }
-          </style>
-        </head>
-        <body>
-          <pre>${txt}</pre>
-          <button onclick="window.print()" style="padding:10px 20px; margin-top:10px; cursor:pointer; background:#C9A84C; color:#000; border:none;">Imprimir</button>
-        </body>
-      </html>
-    `);
+  list.sort((a,b)=>{ if(a.data!==b.data)return b.data.localeCompare(a.data); return b.horario.localeCompare(a.horario); });
+
+  document.getElementById('countBadge').textContent = `${list.length} registro${list!==1?'s':''}`;
+
+  if(list.length===0){
+    document.getElementById('tableContainer').innerHTML='<div class="empty-state"><div class="empty-icon">🔍</div><div class="empty-text">Nenhum registro encontrado</div></div>';
+    return;
   }
 
-  // ── VISUALIZAR BONITO ──
-  function visualizarBonito(id) {
-    const b = getBookings().find(x => x.id === id);
-    if (!b) return;
+  const rows = list.map(b=>{
+    const isToday   = b.data===t;
+    const canceled  = b.status==='cancelado';
+    const finished  = b.status==='finalizado';
+    const wppNum    = (b.whatsapp||'').replace(/\D/g,'');
+    const wppMsg    = encodeURIComponent(`Olá ${b.nome}! 👋\n✂ Seu agendamento na *Barbearia Reis* está confirmado!\n\n📅 Data: ${formatDate(b.data)}\n⏰ Horário: ${b.horario}\n💈 Serviço: ${b.servico}\n💰 Valor: ${b.preco}\n\nTe esperamos! ✂`);
+    const wppLink   = `https://wa.me/55${wppNum}?text=${wppMsg}`;
+    const idFmt     = `#${String(b.id ?? 0).padStart(4,'0')}`;
 
-    const statusColor = b.status === 'confirmado' ? '#27ae60' : b.status === 'cancelado' ? '#e74c3c' : '#5dade2';
-    const statusLabel = b.status === 'confirmado' ? 'CONFIRMADO' : b.status === 'cancelado' ? 'CANCELADO' : 'FINALIZADO';
-
-    const html = `
-      <!DOCTYPE html>
-      <html lang="pt-BR">
-      <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Agendamento #${String(b.id).padStart(4, '0')}</title>
-        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
-        <style>
-          * { margin: 0; padding: 0; box-sizing: border-box; }
-          body {
-            background: linear-gradient(135deg, #0D0D0D 0%, #1a1a1a 100%);
-            color: #c8b89a;
-            font-family: 'Barlow', sans-serif;
-            padding: 40px 20px;
-            min-height: 100vh;
-          }
-          .container {
-            max-width: 600px;
-            margin: 0 auto;
-            background: #111111;
-            border: 2px solid #C9A84C;
-            border-top: 6px solid #C9A84C;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 10px 40px rgba(201, 168, 76, 0.15);
-          }
-          .header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 2px solid rgba(201, 168, 76, 0.2);
-            padding-bottom: 20px;
-          }
-          .id-big {
-            font-family: 'Bebas Neue', serif;
-            font-size: 48px;
-            color: #C9A84C;
-            letter-spacing: 4px;
-            margin-bottom: 10px;
-          }
-          .title {
-            font-family: 'Bebas Neue', serif;
-            font-size: 32px;
-            color: #f0ead8;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-          }
-          .status-badge {
-            display: inline-block;
-            background: ${statusColor};
-            color: white;
-            padding: 8px 20px;
-            border-radius: 4px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 14px;
-          }
-          .section {
-            margin-bottom: 32px;
-          }
-          .section-label {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 12px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #C9A84C;
-            margin-bottom: 12px;
-            font-weight: 700;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.2);
-            padding-bottom: 8px;
-          }
-          .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.08);
-          }
-          .info-row:last-child {
-            border-bottom: none;
-          }
-          .label {
-            font-family: 'Barlow Condensed', sans-serif;
-            font-size: 12px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #c8b89a;
-          }
-          .value {
-            font-size: 16px;
-            color: #f0ead8;
-            font-weight: 600;
-            text-align: right;
-          }
-          .value.highlight {
-            color: #C9A84C;
-            font-family: 'Bebas Neue', serif;
-            font-size: 20px;
-          }
-          .footer {
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid rgba(201, 168, 76, 0.2);
-            font-size: 12px;
-            color: rgba(200, 184, 154, 0.6);
-            letter-spacing: 1px;
-          }
-          .action-bar {
-            display: flex;
-            gap: 12px;
-            margin-top: 30px;
-            justify-content: center;
-          }
-          button {
-            padding: 12px 24px;
-            background: #C9A84C;
-            color: #0D0D0D;
-            border: none;
-            cursor: pointer;
-            font-family: 'Bebas Neue', serif;
-            font-size: 14px;
-            letter-spacing: 2px;
-            border-radius: 4px;
-            transition: all .3s;
-            font-weight: 700;
-          }
-          button:hover {
-            background: #e8c76a;
-            transform: translateY(-2px);
-          }
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <div class="header">
-            <div class="id-big">#${String(b.id).padStart(4, '0')}</div>
-            <div class="title">Barbearia Reis</div>
-            <div class="status-badge">${statusLabel}</div>
-          </div>
-
-          <div class="section">
-            <div class="section-label">📋 Dados do Cliente</div>
-            <div class="info-row">
-              <span class="label">Nome</span>
-              <span class="value">${b.nome}</span>
-            </div>
-            <div class="info-row">
-              <span class="label">WhatsApp</span>
-              <span class="value">${b.whatsapp}</span>
-            </div>
-          </div>
-
-          <div class="section">
-            <div class="section-label">✂️ Serviço</div>
-            <div class="info-row">
-              <span class="label">Tipo</span>
-              <span class="value">${b.servico}</span>
-            </div>
-            <div class="info-row">
-              <span class="label">Valor</span>
-              <span class="value highlight">${b.preco}</span>
-            </div>
-          </div>
-
-          <div class="section">
-            <div class="section-label">📅 Agendamento</div>
-            <div class="info-row">
-              <span class="label">Data</span>
-              <span class="value highlight">${formatDate(b.data)}</span>
-            </div>
-            <div class="info-row">
-              <span class="label">Horário</span>
-              <span class="value highlight">${b.horario}</span>
-            </div>
-          </div>
-
-          <div class="action-bar">
-            <button onclick="window.print()">🖨️ Imprimir</button>
-            <button onclick="window.close()">❌ Fechar</button>
-          </div>
-
-          <div class="footer">
-            Criado em: ${new Date(b.criadoEm).toLocaleString('pt-BR')}
-          </div>
+    return `<tr class="${canceled?'cancelado':''}">
+      <td class="td-id">${idFmt}</td>
+      <td class="td-name">${b.nome}${isToday&&!canceled?'<br><span class="today-chip">HOJE</span>':''}</td>
+      <td class="td-phone">${b.whatsapp||'—'}</td>
+      <td class="td-service">${b.servico}</td>
+      <td class="td-datetime"><span style="color:var(--white)">${formatDate(b.data)}</span><br><span style="color:var(--gold)">${b.horario}</span></td>
+      <td class="td-price">${b.preco}</td>
+      <td><span class="badge badge-${b.status}">${b.status}</span></td>
+      <td>
+        <div class="actions">
+          <a href="${wppLink}" target="_blank" class="btn-wpp">📱 WhatsApp</a>
+          <button class="btn-cancel" onclick="pedirCancelar('${b.docId}')" ${canceled||finished?'disabled':''}>✕ Cancelar</button>
+          <button class="btn-finish" onclick="finalizarBooking('${b.docId}')" ${canceled||finished?'disabled':''}>✔ Finalizar</button>
         </div>
-      </body>
-      </html>
-    `;
+      </td>
+    </tr>`;
+  }).join('');
 
-    const popup = window.open('', 'PRETTY_VIEW', 'width=700,height=900');
-    popup.document.write(html);
-  }
+  document.getElementById('tableContainer').innerHTML=`
+    <table>
+      <thead><tr>
+        <th>ID</th><th>Cliente</th><th>WhatsApp</th><th>Serviço</th>
+        <th>Data / Hora</th><th>Valor</th><th>Status</th><th>Ações</th>
+      </tr></thead>
+      <tbody>${rows}</tbody>
+    </table>`;
+};
+
+// ════════════════════════════════════════════
+// CANCELAR
+// ════════════════════════════════════════════
+window.pedirCancelar = function(docId){
+  const b = allBookings.find(x=>x.docId===docId);
+  if(!b) return;
+  cancelTarget = docId;
+  document.getElementById('cancelModalText').innerHTML=`Cancelar agendamento de <strong style="color:var(--white)">${b.nome}</strong>?<br><strong style="color:var(--gold)">${b.servico}</strong> · ${formatDate(b.data)} às ${b.horario}<br><br><small>O horário será liberado para novos agendamentos.</small>`;
+  document.getElementById('cancelModal').classList.add('show');
+};
+window.fecharModal = function(){ document.getElementById('cancelModal').classList.remove('show'); cancelTarget=null; };
+window.executarCancelamento = async function(){
+  if(!cancelTarget) return;
+  try{
+    await updateDoc(doc(db,COL,cancelTarget),{status:'cancelado'});
+  } catch(e){ console.error(e); alert('Erro ao cancelar. Tente novamente.'); }
+  fecharModal();
+};
+
+// ════════════════════════════════════════════
+// FINALIZAR
+// ════════════════════════════════════════════
+window.finalizarBooking = async function(docId){
+  if(!confirm('Marcar este corte como finalizado?')) return;
+  try{
+    await updateDoc(doc(db,COL,docId),{status:'finalizado'});
+  } catch(e){ console.error(e); alert('Erro. Tente novamente.'); }
+};
+
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') fecharModal(); });
 </script>
+
 </body>
 </html>
